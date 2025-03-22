@@ -1,0 +1,28 @@
+{
+  "name": "zapmcp-cli",
+  "version": "0.1.0",
+  "description": "Command line interface for ZapMCP framework",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "zapmcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --format cjs,esm --watch --dts",
+    "lint": "eslint src/**/*.ts",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "commander": "^11.0.0",
+    "chalk": "^4.1.2",
+    "fs-extra": "^11.1.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.1",
+    "@types/node": "^20.5.0",
+    "eslint": "^8.48.0",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  }
+} 
