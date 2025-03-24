@@ -31,7 +31,6 @@
     "mcp-proxy": "^2.11.0",
     "node-fetch": "^3.3.2",
     "strict-event-emitter-types": "^2.0.0",
-    "undici": "^7.5.0",
     "uri-templates": "^0.2.0",
     "zod": "^3.24.2",
     "zod-to-json-schema": "^3.24.5"

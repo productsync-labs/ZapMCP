@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "zapmcp dev",
     "build": "zapmcp build",
-    "start": "zapmcp start"
+    "clean": "rm -rf dist",
+    "start": "npm run build && n"
   },
   "dependencies": {
     "zapmcp": "^0.1.0"

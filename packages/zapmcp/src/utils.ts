@@ -1,6 +1,5 @@
 import { readFile } from "fs/promises";
 import { fileTypeFromBuffer } from "file-type";
-import { fetch } from "undici";
 import { ImageContent } from "./types.js";
 
 /**
