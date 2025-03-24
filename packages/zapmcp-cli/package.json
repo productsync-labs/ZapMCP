@@ -2,13 +2,12 @@
   "name": "zapmcp-cli",
   "version": "0.1.0",
   "description": "Command line interface for ZapMCP framework",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "type": "module",
   "bin": {
-    "zapmcp": "./dist/index.mjs"
+    "zapmcp": "dist/index.js"
   },
   "scripts": {
-    "build": "tsup src/index.ts --format esm --dts",
+    "build": "tsup",
     "dev": "tsup src/index.ts --format esm --watch --dts",
     "lint": "eslint src/**/*.ts",
     "clean": "rm -rf dist"
@@ -24,5 +23,17 @@
     "eslint": "^8.48.0",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "format": [
+      "esm"
+    ],
+    "splitting": true,
+    "sourcemap": true,
+    "clean": true,
+    "dts": true
   }
 }
