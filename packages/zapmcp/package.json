@@ -22,7 +22,9 @@
     "build": "tsup",
     "dev": "tsup src/index.ts --format cjs,esm --watch --dts",
     "lint": "eslint src/**/*.ts",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "pub:beta": "pnpm build && pnpm publish --no-git-checks --access public --tag beta",
+    "pub:release": "pnpm build && pnpm publish --access public"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.7.0",
