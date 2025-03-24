@@ -17,11 +17,7 @@ server.addTool({
 
 // Start the server
 server.start({
-  transportType: "sse",
-  sse: {
-    endpoint: "/mcp",
-    port: 3000,
-  }
+  transportType: "stdio"
 });
 
-console.log("Server is running on http://localhost:3000/mcp"); 
+console.log("Server is ready."); 

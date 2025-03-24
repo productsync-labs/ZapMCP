@@ -6,7 +6,7 @@ A ZapMCP project for interacting with AI models.
 
 ```bash
 npm install
-npm run dev
+npm run start
 ```
 
 This will start your ZapMCP server at http://localhost:3000/mcp
