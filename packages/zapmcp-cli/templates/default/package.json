@@ -1,0 +1,17 @@
+{
+  "name": "project-name",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "zapmcp dev",
+    "build": "zapmcp build",
+    "start": "zapmcp start"
+  },
+  "dependencies": {
+    "zapmcp": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.0",
+    "typescript": "^5.2.2"
+  }
+} 
