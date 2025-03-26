@@ -1,8 +1,9 @@
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { startSSEServer } from "mcp-proxy";
+import { createCodeExamplesTool } from './tools/code-examples.js';
 
-import { FastMCPSession } from "./session.js";
-import { FastMCPEventEmitter } from "./events.js";
+import { ZapMCPSession } from "./session.js";
+import { ZapMCPEventEmitter } from "./events.js";
 import {
   Authenticate,
   InputPrompt,
@@ -16,14 +17,14 @@ import {
   ToolParameters,
 } from "./types.js";
 
-export class FastMCP<
+export class ZapMCP<
   T extends Record<string, unknown> | undefined = undefined,
-> extends FastMCPEventEmitter {
+> extends ZapMCPEventEmitter {
   #options: ServerOptions<T>;
   #prompts: InputPrompt[] = [];
   #resources: Resource[] = [];
   #resourcesTemplates: InputResourceTemplate[] = [];
-  #sessions: FastMCPSession<T>[] = [];
+  #sessions: ZapMCPSession<T>[] = [];
   #sseServer: SSEServer | null = null;
   #tools: Tool<T>[] = [];
   #authenticate: Authenticate<T> | undefined;
@@ -35,8 +36,28 @@ export class FastMCP<
     this.#authenticate = options.authenticate;
   }
 
-  public get sessions(): FastMCPSession<T>[] {
+  public get sessions(): ZapMCPSession<T>[] {
     return this.#sessions;
+  }
+
+  /**
+   * Adds a tool that lists code examples.
+   * @param config - Configuration object for the code examples tool
+   * @param config.name - Name of the tool (optional, defaults to "codeExamples")
+   * @param config.description - Description of what the tool does (optional, defaults to "Get code examples from the examples directory. Without a specific example name, lists all available examples. With an example name, returns the full source code of that example.")
+   * @param config.examplesDir - Directory path where example files are stored
+   */ 
+  public async addCodeExamples(config: {
+    name?: string;
+    description?: string;
+    examplesDir: string;
+  }) {
+    const tool = await createCodeExamplesTool({
+      name: config.name ?? 'codeExamples',
+      description: config.description ?? 'Get code examples from the examples directory. Without a specific example name, lists all available examples. With an example name, returns the full source code of that example.',
+      examplesDir: config.examplesDir,
+    });
+    this.addTool(tool);
   }
 
   /**
@@ -87,7 +108,7 @@ export class FastMCP<
     if (options.transportType === "stdio") {
       const transport = new StdioServerTransport();
 
-      const session = new FastMCPSession<T>({
+      const session = new ZapMCPSession<T>({
         name: this.#options.name,
         version: this.#options.version,
         tools: this.#tools,
@@ -104,7 +125,7 @@ export class FastMCP<
         session,
       });
     } else if (options.transportType === "sse") {
-      this.#sseServer = await startSSEServer<FastMCPSession<T>>({
+      this.#sseServer = await startSSEServer<ZapMCPSession<T>>({
         endpoint: options.sse.endpoint as `/${string}`,
         port: options.sse.port,
         createServer: async (request) => {
@@ -114,7 +135,7 @@ export class FastMCP<
             auth = await this.#authenticate(request);
           }
 
-          return new FastMCPSession<T>({
+          return new ZapMCPSession<T>({
             auth,
             name: this.#options.name,
             version: this.#options.version,

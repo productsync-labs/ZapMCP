@@ -1,23 +1,23 @@
 import { z } from "zod";
 import http from "http";
-import { FastMCPSession } from "./session.js";
 import { Root } from "@modelcontextprotocol/sdk/types.js";
+import { ZapMCPSession } from "./session.js";
 
 export type SSEServer = {
   close: () => Promise<void>;
 };
 
-export type FastMCPEvents<T extends FastMCPSessionAuth> = {
-  connect: (event: { session: FastMCPSession<T> }) => void;
-  disconnect: (event: { session: FastMCPSession<T> }) => void;
+export type ZapMCPEvents<T extends ZapMCPSessionAuth> = {
+  connect: (event: { session: ZapMCPSession<T> }) => void;
+  disconnect: (event: { session: ZapMCPSession<T> }) => void;
 };
 
-export type FastMCPSessionEvents = {
+export type ZapMCPSessionEvents = {
   rootsChanged: (event: { roots: Root[] }) => void;
   error: (event: { error: Error }) => void;
 };
 
-export type FastMCPSessionAuth = Record<string, unknown> | undefined;
+export type ZapMCPSessionAuth = Record<string, unknown> | undefined;
 
 export type Extra = unknown;
 
@@ -43,7 +43,7 @@ export type Progress = {
   total?: number;
 };
 
-export type Context<T extends FastMCPSessionAuth> = {
+export type Context<T extends ZapMCPSessionAuth> = {
   session: T | undefined;
   reportProgress: (progress: Progress) => Promise<void>;
   log: {
@@ -133,16 +133,13 @@ export const CompletionZodSchema = z.object({
 }) satisfies z.ZodType<Completion>;
 
 export type Tool<
-  T extends FastMCPSessionAuth,
+  T extends ZapMCPSessionAuth,
   Params extends ToolParameters = ToolParameters,
 > = {
   name: string;
-  description?: string;
-  parameters?: Params;
-  execute: (
-    args: z.infer<Params>,
-    context: Context<T>
-  ) => Promise<string | ContentResult | TextContent | ImageContent>;
+  description: string;
+  parameters: Params;
+  execute: (args: z.infer<Params>, context: Context<T>) => Promise<string>;
 };
 
 export type ResourceResult =
@@ -255,7 +252,7 @@ export type Prompt<
   name: string;
 };
 
-export type ServerOptions<T extends FastMCPSessionAuth> = {
+export type ServerOptions<T extends ZapMCPSessionAuth> = {
   name: string;
   version: `${number}.${number}.${number}`;
   authenticate?: Authenticate<T>;

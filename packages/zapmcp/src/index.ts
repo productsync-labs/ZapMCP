@@ -8,5 +8,5 @@ export * from "./errors.js";
 export * from "./utils.js";
 
 // Export core classes
-export { FastMCPSession } from "./session.js";
-export { FastMCP } from "./server.js";
+export { ZapMCPSession } from "./session.js";
+export { ZapMCP } from "./server.js";

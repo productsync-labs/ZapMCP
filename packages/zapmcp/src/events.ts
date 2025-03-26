@@ -1,15 +1,15 @@
 import { EventEmitter } from "events";
 import { StrictEventEmitter } from "strict-event-emitter-types";
-import { FastMCPEvents, FastMCPSessionAuth, FastMCPSessionEvents } from "./types.js";
+import { ZapMCPEvents, ZapMCPSessionAuth, ZapMCPSessionEvents } from "./types.js";
 
-export const FastMCPSessionEventEmitterBase: {
-  new (): StrictEventEmitter<EventEmitter, FastMCPSessionEvents>;
+export const ZapMCPSessionEventEmitterBase: {
+  new (): StrictEventEmitter<EventEmitter, ZapMCPSessionEvents>;
 } = EventEmitter;
 
-export class FastMCPSessionEventEmitter extends FastMCPSessionEventEmitterBase {}
+export class ZapMCPSessionEventEmitter extends ZapMCPSessionEventEmitterBase {}
 
-export const FastMCPEventEmitterBase: {
-  new (): StrictEventEmitter<EventEmitter, FastMCPEvents<FastMCPSessionAuth>>;
+export const ZapMCPEventEmitterBase: {
+  new (): StrictEventEmitter<EventEmitter, ZapMCPEvents<ZapMCPSessionAuth>>;
 } = EventEmitter;
 
-export class FastMCPEventEmitter extends FastMCPEventEmitterBase {}
+export class ZapMCPEventEmitter extends ZapMCPEventEmitterBase {}

@@ -1,7 +1,7 @@
-import { FastMCP, Tool } from "zapmcp";
+import { ZapMCP } from "zapmcp";
 
-// Create a new FastMCP server
-const server = new FastMCP({
+// Create a new ZapMCP server
+const server = new ZapMCP({
   name: "project-name",
   version: "0.1.0",
 });

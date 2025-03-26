@@ -25,7 +25,7 @@ import Fuse from "fuse.js";
 import parseURITemplate from "uri-templates";
 
 import {
-  FastMCPSessionAuth,
+  ZapMCPSessionAuth,
   LoggingLevel,
   Prompt,
   Resource,
@@ -41,12 +41,12 @@ import {
   SerializableValue,
   ContentResult,
 } from "./types.js";
-import { FastMCPSessionEventEmitter } from "./events.js";
+import { ZapMCPSessionEventEmitter } from "./events.js";
 import { UnexpectedStateError, UserError } from "./errors.js";
 
-export class FastMCPSession<
-  T extends FastMCPSessionAuth = FastMCPSessionAuth,
-> extends FastMCPSessionEventEmitter {
+export class ZapMCPSession<
+  T extends ZapMCPSessionAuth = ZapMCPSessionAuth,
+> extends ZapMCPSessionEventEmitter {
   #capabilities: ServerCapabilities = {};
   #clientCapabilities?: ClientCapabilities;
   #loggingLevel: LoggingLevel = "info";
@@ -241,7 +241,7 @@ export class FastMCPSession<
     }
 
     if (!this.#clientCapabilities) {
-      console.warn("[warning] FastMCP could not infer client capabilities");
+      console.warn("[warning] ZapMCP could not infer client capabilities");
     }
 
     if (this.#clientCapabilities?.roots?.listChanged) {
@@ -250,7 +250,7 @@ export class FastMCPSession<
         this.#roots = roots.roots;
       } catch (e) {
         console.error(
-          `[error] FastMCP received error listing roots.\n\n${e instanceof Error ? e.stack : JSON.stringify(e)}`
+          `[error] ZapMCP received error listing roots.\n\n${e instanceof Error ? e.stack : JSON.stringify(e)}`
         );
       }
     }

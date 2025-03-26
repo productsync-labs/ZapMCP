@@ -1,11 +1,11 @@
-export abstract class FastMCPError extends Error {
+export abstract class ZapMCPError extends Error {
   public constructor(message?: string) {
     super(message);
     this.name = new.target.name;
   }
 }
 
-export class UnexpectedStateError extends FastMCPError {
+export class UnexpectedStateError extends ZapMCPError {
   public extras?: Record<string, unknown>;
 
   public constructor(message: string, extras?: Record<string, unknown>) {
