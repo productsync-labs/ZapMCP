@@ -17,6 +17,7 @@ const navbar = (
 )
 const footer = <Footer>MIT {new Date().getFullYear()} © Nextra.</Footer>
  
+// @ts-expect-error - TODO: fix this
 export default async function RootLayout({ children }) {
   return (
     <html
