@@ -1,0 +1,37 @@
+# Installation
+
+## Prerequisites
+
+Before installing ZapMCP, make sure you have:
+
+- Node.js 16 or later
+- npm 7 or later
+
+## Installation
+
+You can install ZapMCP using npm:
+
+```bash
+npm install zapmcp
+```
+
+## Quick Start
+
+After installation, you can create a basic ZapMCP application:
+
+```typescript
+import { ZapMCP } from 'zapmcp';
+
+const server = new ZapMCP({
+  name: 'my-app',
+  version: '1.0.0'
+});
+
+await server.start();
+```
+
+## Next Steps
+
+- [Configuration](/docs/configuration) - Learn how to configure your ZapMCP application
+- [API Reference](/docs/api) - Explore the ZapMCP API
+- [Examples](/docs/examples) - See examples of ZapMCP in action 

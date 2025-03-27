@@ -5,7 +5,10 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "incremental": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
   "include": [
     "**/*.ts",

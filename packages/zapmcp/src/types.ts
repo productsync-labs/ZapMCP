@@ -137,9 +137,12 @@ export type Tool<
   Params extends ToolParameters = ToolParameters,
 > = {
   name: string;
-  description: string;
-  parameters: Params;
-  execute: (args: z.infer<Params>, context: Context<T>) => Promise<string>;
+  description?: string;
+  parameters?: Params;
+  execute: (
+    args: z.infer<Params>,
+    context: Context<T>
+  ) => Promise<string | ContentResult | TextContent | ImageContent>;
 };
 
 export type ResourceResult =
