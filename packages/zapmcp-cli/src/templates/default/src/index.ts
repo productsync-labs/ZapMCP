@@ -8,10 +8,10 @@ const server = new ZapMCP({
 
 // Add a simple tool
 server.addTool({
-  name: "hello",
-  description: "A simple hello world tool",
+  name: "temperature",
+  description: "A simple tool to get the current temperature",
   execute: async () => {
-    return "Hello from project-name!";
+    return "It's 42 degrees";
   }
 });
 
