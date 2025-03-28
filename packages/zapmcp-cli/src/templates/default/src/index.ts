@@ -15,9 +15,4 @@ server.addTool({
   }
 });
 
-// Start the server
-server.start({
-  transportType: "stdio"
-});
-
-console.log("Server is ready."); 
+export { server };
