@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "basic-example": {
+      "command": "npx",
+      "args": ["tsx", "./src/stdio.ts"]
+    }
+  }
+}
