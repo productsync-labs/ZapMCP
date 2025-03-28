@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "zapyzap": {
+      "command": "npx",
+      "args": ["-y", "@zapmcp/zapyzap@latest"]
+    }
+  }
+}
