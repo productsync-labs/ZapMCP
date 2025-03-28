@@ -92,11 +92,11 @@ async function processTemplateFiles(
   
   // Process any other files that need variable replacement
   // For example: README.md, config files, etc.
-  const configPath = path.join(targetDir, 'zapmcp.config.json');
+  const configPath = path.join(targetDir, '.cursor', 'mcp.json');
   if (fs.existsSync(configPath)) {
-    const config = await fs.readJSON(configPath);
-    config.name = variables.projectName;
-    await fs.writeJSON(configPath, config, { spaces: 2 });
+    let content = fs.readFileSync(configPath, 'utf8');
+    content = content.replace(/project-name/g, variables.projectName);
+    fs.writeFileSync(configPath, content);
   }
   
   // Replace project name in README.md

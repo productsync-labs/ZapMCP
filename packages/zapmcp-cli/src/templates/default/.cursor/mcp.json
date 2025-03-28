@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "mastra": {
+    "project-name": {
       "command": "npx",
       "args": ["tsx", "./src/stdio.ts"]
     }
