@@ -1,0 +1,35 @@
+{
+  "name": "code-examples",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": "dist/stdio.js",
+  "scripts": {
+    "build": "tsup",
+    "prepare": "tsx src/prepare.ts",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "zapmcp": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.28",
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.2.2"
+  },
+  "tsup": {
+    "entry": [
+      "src/stdio.ts"
+    ],
+    "format": [
+      "esm"
+    ],
+    "splitting": true,
+    "sourcemap": true,
+    "clean": true,
+    "dts": true
+  }
+}

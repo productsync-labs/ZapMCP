@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "upstash-docs": {
+      "command": "npx",
+      "args": ["tsx", "./src/stdio.ts"]
+    }
+  }
+}

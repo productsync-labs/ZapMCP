@@ -27,6 +27,8 @@ out/
 build
 dist
 
+# Examples package-lock files
+examples/*/package-lock.json
 
 # Debug
 npm-debug.log*
