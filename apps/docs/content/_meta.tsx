@@ -1,6 +1,7 @@
 export default {
   'index': '',
-  'quick-start': '',
+  // 'quick-start': '',
   'use-cases': '',
-  'guides': ''
+  'guides': '',
+  'example-servers': '',
 }

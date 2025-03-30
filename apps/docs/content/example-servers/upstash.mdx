@@ -1,0 +1,42 @@
+# Upstash Redis Docs
+
+> [!TIP] 
+>
+> Find the code for this project on [GitHub](https://github.com/productsync-labs/zapmcp/tree/main/examples/code-examples).
+
+## Preparing Example Projects
+
+First, we need to convert our example projects into a digestible format. For compatibility, the `addCodeExamples` method accepts a directory as its parameter. When called, it reads all the markdown files in that directory and treats each file as a sample project.
+
+Upstash provides several example projects, as shown in their [GitHub repository](https://github.com/upstash/redis-js/tree/main/examples). To convert these projects into markdown files, some preprocessing is needed. The [zapmcp repository](https://github.com/productsync-labs/zapmcp/blob/main/examples/code-examples/src/prepare.ts) contains a simple script that goes through each project and bundles code until it reaches 500 lines. This process results in the following files for the Upstash Redis project:
+
+```
+auto-pipeline.md
+aws-cdk-python.md
+aws-cdk-typescript.md
+azure-functions.md
+cloudflare-workers-with-typescript.md
+cloudflare-workers.md
+deno.md
+ion.md
+nextjs-app-router.md
+nextjs-pages-router.md
+sst-v2.md
+vercel-functions-app-router.md
+vercel-functions-pages-router.md
+with-sentry.md
+```
+
+## Serving the Markdown Files
+
+After creating these markdown files, simply call the method to serve them. Use the `addCodeExamples` method as shown below:
+
+```typescript
+// Add docs for Upstash Redis
+await server.addCodeExamples({
+  name: "upstashExamples",
+  description: `Get code examples from the Upstash Redis examples directory.
+    If no specific example name is provided, it lists all available examples.
+    If an example name is provided, it returns the full source code of that example.`,
+  examplesDir: "contents/code-examples",
+});

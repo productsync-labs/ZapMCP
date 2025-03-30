@@ -1,6 +1,41 @@
 # Why use a MCP Server
 
-Often times libraries and services ship with a lot of code examples. These examples are very educative for understanding the capabilities of a library, framework, or API service. There are several challenges with relying on only agents when it comes to knowledge about your library:
+AI-powered coding agents frequently encounter significant challenges when using external code libraries. Two primary methods currently used to understand libraries are:
 
-- The underlying LLM might not yet know about your library
-- The underlying LLM might 
+- Web Search: Often unreliable due to fragmented, incomplete, or inaccessible documentation.
+- Pre-existing Training Data: Can be outdated or irrelevant, creating compatibility and security risks.
+
+These challenges negatively impact accuracy, security, and efficiency.
+
+## Introducing MCP (Model Context Protocol)
+
+The Model Context Protocol (MCP), developed by Anthropic, provides a standardized approach for AI models to seamlessly communicate with external tools and data sources. MCP acts as a bridge between AI agents and external systems, streamlining integration and enhancing automation capabilities.
+
+## A Framework for Coding Agents
+
+To address existing challenges, [ZapMCP](https://zapmcp.io) simplifies the creation of MCP servers specifically tailored for code libraries and services. The framework helps bundle all essential documentation, knowledgebases, and relevant materials like code examples directly into the MCP server.
+
+## Key Features of the Framework:
+
+- Bundled comprehensive documentation and code examples.
+- Version-specific library contexts, ensuring accuracy.
+- Enhanced security by reducing reliance on outdated training data.
+- Ease of distribution and integration for end-users.
+
+## Benefits of MCP-Based Docs Bundling
+
+### Improved Accuracy
+
+By embedding documentation and examples directly into the MCP server, AI agents access accurate, current, and relevant information, reducing integration errors.
+
+### Enhanced Security
+
+MCP servers mitigate the risks associated with outdated library versions, protecting against vulnerabilities that outdated training corpora might inadvertently introduce.
+
+### Increased Efficiency
+
+Using local MCP servers enables faster, more reliable integrations, eliminating the need for redundant external servers or searches.
+
+### User-Friendly Distribution
+
+MCP servers can be easily distributed to users (as NPM packages), ensuring consistent and correct use of libraries across diverse development environments.
